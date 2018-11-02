@@ -8,8 +8,7 @@ Final Project is to be completed in groups each of that consists of two students
 numbered by their row index in drug_consumption.data.txt
 
 ***** PARTICIPANT DATA *****
-	
-	...
+0. ID - ignoring this
 1. Age - their age (ex: 0.49788)
 2. Gender - their gender (ex: 0.48246)
 3. Education - level of education (ex: -0.05921)
