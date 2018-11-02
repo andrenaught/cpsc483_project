@@ -44,11 +44,11 @@ numbered by their row index in drug_consumption.data.txt
 
  13. Alcohol_cons - alcohol consumption (ex: CL5)
 
-	...
+	...skipping
  18. Cannabis_cons - cannabis consumption (ex: CL0)
  19. Choc_cons - chocolate consumption (ex: CL5)
 
-	...
+	...skipping
  21. Crack_cons - crack consumption (CL0)
 
-	...
+	...skipping
