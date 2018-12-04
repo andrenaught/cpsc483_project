@@ -10,6 +10,8 @@ Main Idea:
 2.	Let's try predicting other drugs as well like Cannabis and Crack
 '''
 
+print("\n***** Preprocessing + Feature Selection + Data Separation ******\n")
+
 #1. Import dataset
 cols_to_use = [1,2,3,4,5,6,7,8,9,10,11,12,13,18,19,21] #we'll ignore some columns
 dataset = pd.read_csv("drug_consumption.data.txt", sep=",", header=None, usecols=cols_to_use)
@@ -22,6 +24,7 @@ all_x = [0,1,2,3,4,5,6,7,8,9,10,11]
 independent_cols = personality_only
 
 y_col_names = dataset.columns.values[independent_cols]
+print("Features:")
 print(y_col_names)
 X = dataset.iloc[:, independent_cols].values
 y = dataset.iloc[:, [12]].values #lets choose Alcohol Consumption
@@ -47,7 +50,7 @@ X = scaler.transform(X)
 
 #5. Split Dataset into Training set & Test set
 from sklearn.model_selection import train_test_split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0) #20% of the dataset is put into test set, 80% into training set
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20, random_state = 0) #20% of the dataset is put into test set, 80% into training set
 
 #6. Feature Selection
 from sklearn.feature_selection import SelectKBest
@@ -61,31 +64,14 @@ for index, val in enumerate(feature_selector.get_support()):
 	if(val == True):
 		cols_to_keep.append(index)
 
-print("features selected: ")
+print("Features selected: ")
 print(y_col_names[cols_to_keep])
-#print(feature_selector.scores_)
+print(feature_selector.scores_[cols_to_keep])
 
 #remove the features from the test data as well
 mask = np.array(feature_selector.get_support())
 X_test = X_test[:, mask]
 
-##### Start The Model #####
-
-#1. SVM
-print("\n\nStarting SVM Model: ")
-from sklearn.svm import LinearSVC
-from sklearn.datasets import make_classification
-clf = LinearSVC(random_state=0, tol=1e-5)
-clf.fit(X_train, y_train.ravel())
-y_pred = clf.predict(X_test)
-
-#identify result
-from sklearn.metrics import classification_report, confusion_matrix  
-from sklearn.metrics import accuracy_score
-print("\nAccuracy Score (SVM):")
-print(accuracy_score(y_test,y_pred))
-
-#TODO: plot it
 
 #It looks like 0 - 12 is already normalized and feature encoded - so don't have to worry about that.
 #TODO: feature encode + normalize 13, 18, 19, 21
