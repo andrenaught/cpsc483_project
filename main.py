@@ -66,7 +66,7 @@ from sklearn.feature_selection import f_classif
 
 
 #For classification: chi2, f_classif, mutual_info_classif. We pick chi2
-feature_selector = SelectKBest(chi2, k=6) # get 4 best features
+feature_selector = SelectKBest(chi2, k=4) # get 4 best features
 X_train = feature_selector.fit_transform(X_train, y_train)
 cols_to_keep = []
 for index, val in enumerate(feature_selector.get_support()):
