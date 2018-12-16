@@ -23,7 +23,7 @@ dataset.columns = ["ID", "Age", "Gender", "Education", "Country", "Ethnicity", "
 personality_only = [5,6,7,8,9,10,11]
 all_x = [1,2,3,4,5,6,7,8,9,10,11,12]
 all_except_alcohol = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
-independent_cols = all_x
+independent_cols = personality_only
 
 #choosing to do binary classification or multi-class classification
 normal = {'CL0':0,'CL1':1,'CL2':2,'CL3':3,'CL4':4,'CL5':5,'CL6':6}
